@@ -1,0 +1,6 @@
+[submodule "vendor/jsoncpp"]
+	path = vendor/jsoncpp
+	url = git@github.com:ksophocleous/jsoncpp.git
+[submodule "vendor/slog"]
+	path = vendor/slog
+	url = git@github.com:ksophocleous/slog.git
