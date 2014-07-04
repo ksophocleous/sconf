@@ -42,9 +42,9 @@ void cfg_helper::save(group& group, const std::string& filename)
 	}
 
 #ifndef _WIN32
-	auto result = rename(newname.c_str(), m_filepath.c_str());
+	auto result = rename(newname.c_str(), filename.c_str());
 	if (result != 0)
-		slog::error() << "failed to save config file '" << m_filepath << "'";
+		slog::error() << "failed to save config file '" << filename << "'";
 #else
 	BOOL result = MoveFileExA(newname.c_str(), filename.c_str(), MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH);
 	if (result == FALSE)

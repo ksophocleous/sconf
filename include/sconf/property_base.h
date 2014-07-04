@@ -8,10 +8,10 @@ namespace Json { class Value; }
 namespace sconf
 {
 	template<typename T>
-	extern T value_from_json(const Json::Value& in, T default);
+	extern T value_from_json(const Json::Value& in, T defaultValue);
 
 	template<>
-	extern uint32_t value_from_json(const Json::Value& in, uint32_t default);
+	uint32_t value_from_json(const Json::Value& in, uint32_t defaultValue);
 
 	class property_base
 	{

@@ -1,9 +1,5 @@
 #include "sconf/sconf.h"
-
 #include <slog/slog.h>
-#include <slog/slog_logdevice_console.h>
-
-#include <Windows.h>
 
 struct mygroup_people : sconf::group
 {

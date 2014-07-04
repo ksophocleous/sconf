@@ -7,6 +7,10 @@ option(SCONF_BUILD_TESTS "Build tests" ON)
 
 set(libtype STATIC)
 
+if(CMAKE_COMPILER_IS_GNUCXX)
+        set(CMAKE_CXX_FLAGS "-std=c++11")
+endif()
+
 set(src
 #	"src/sconf.cpp"
 #	"src/property.cpp"
