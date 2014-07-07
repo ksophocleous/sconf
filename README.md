@@ -25,8 +25,8 @@ the parameters of the constructor of `sconf::property` are (this, name of proper
 
 dependencies
 ---
-slog (http://github.com/ksophocleous/slog)
-jsonccp (http://github.com/ksophocleous/jsoncpp)
+* slog (http://github.com/ksophocleous/slog)
+* jsonccp (http://github.com/ksophocleous/jsoncpp)
 
 These are `cmake` compatible and are locally included in the project.
 
