@@ -2,7 +2,7 @@ sconf
 ==
 a simple config property serialization library. The project is build using `cmake`, use it as a static library.
 
-The config file created by the library is be default in the current working directory and is declared like this 
+The config file created by the library is by default in the current working directory and is declared like this 
 
 ```C++
 sconf::cfg<mylog> cfg("test.cfg");
