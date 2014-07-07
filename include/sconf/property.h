@@ -12,31 +12,31 @@ namespace sconf
 	class property : public property_base
 	{
 		public:
-			property(group* parent, std::string name, T defaultValue) : property_base(parent, std::move(name)), m_default(defaultValue), m_current(defaultValue)
+			property(group* parent, std::string name, T defaultValue) : property_base(parent, std::move(name)), _default(defaultValue), _current(defaultValue)
 			{
 			}
 
 			virtual void deserialize(const Json::Value& in, bool restore_missing_defaults) override
 			{
-				m_current = value_from_json(in, m_default);
+				_current = value_from_json(in, _default);
 			}
 
 			virtual void serialize(Json::Value& in) const override
 			{
-				in = m_current;
+				in = _current;
 			}
 
 			virtual void restore_default() override
 			{
-				m_current = m_default;
+				_current = _default;
 			}
 
-			const T value() const { return m_current; }
-			operator T() const { return m_current; }
+			const T value() const { return _current; }
+			operator T() const { return _current; }
 
 			property<T>& operator= (T newval)
 			{
-				m_current = std::move(newval);
+				_current = std::move(newval);
 				cfg_helper::mark_dirty();
 				return *this;
 			}
@@ -54,7 +54,7 @@ namespace sconf
 			}
 
 		private:
-			T m_current;
-			T m_default;
+			T _current;
+			T _default;
 	};
 }

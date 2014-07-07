@@ -11,9 +11,9 @@ namespace sconf
 	class cfg : public T
 	{
 		public:
-			cfg(std::string filename) : m_filepath(std::move(filename))
+			cfg(std::string filename) : _filepath(std::move(filename))
 			{
-				cfg_helper::load(*this, m_filepath);
+				cfg_helper::load(*this, _filepath);
 			}
 
 			~cfg()
@@ -24,16 +24,16 @@ namespace sconf
 				}
 				catch (std::exception& e)
 				{
-					slog::error() << "Exception while saving config file '" << m_filepath << "': " << e;
+					slog::error() << "Exception while saving config file '" << _filepath << "': " << e;
 				}
 			}
 
 			void save()
 			{
-				cfg_helper::save(*this, m_filepath);
+				cfg_helper::save(*this, _filepath);
 			}
 
 		private:
-			std::string m_filepath;
+			std::string _filepath;
 	};
 }
