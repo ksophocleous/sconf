@@ -42,7 +42,6 @@ set(hdr_public
 	"include/sconf/property_base.h"
 	)
 
-set(SLOG_BUILD_TESTS OFF)
 add_subdirectory(${CMAKE_SOURCE_DIR}/vendor/jsoncpp)
 add_subdirectory(${CMAKE_SOURCE_DIR}/vendor/slog)
 
@@ -62,10 +61,11 @@ set_target_properties(${libname} PROPERTIES
 target_link_libraries(${libname} ${libs})
 
 if(SCONF_BUILD_TESTS)
-	add_executable(tests "tests/tests.cpp")
-	set_target_properties(tests PROPERTIES
+	set(testname "sconf_tests")
+	add_executable(${testname} "tests/tests.cpp")
+	set_target_properties(${testname} PROPERTIES
 		INCLUDE_DIRECTORIES "${include_dirs}")
-	target_link_libraries(tests ${libname})
+	target_link_libraries(${testname} ${libname})
 endif()
 
 install(TARGETS ${libname}
