@@ -1,4 +1,4 @@
-#include "sconf/sconf.h"
+#include <sconf/sconf.h>
 #include <slog/slog.h>
 
 struct mygroup_people : sconf::group
