@@ -24,6 +24,8 @@ void cfg_helper::load(group& group, const std::string& filename, bool restore_mi
 		cfg_helper::deserialize_all(group, strobj() << "config file '" << filename << "'", configfile, restore_missing_defaults);
 		_cfg_dirty = false;
 	}
+	else
+		_cfg_dirty = true;
 }
 
 //static 
