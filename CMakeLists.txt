@@ -49,22 +49,20 @@ list(APPEND libs "jsoncpp")
 list(APPEND libs "slog")
 
 list(APPEND include_dirs "${CMAKE_CURRENT_SOURCE_DIR}/include")
-list(APPEND include_dirs "${CMAKE_SOURCE_DIR}/vendor/jsoncpp/include")
-list(APPEND include_dirs "${CMAKE_SOURCE_DIR}/vendor/slog/include")
 
 add_library(${libname} ${libtype} ${src} ${hdr_public})
 
 set_target_properties(${libname} PROPERTIES
 	PUBLIC_HEADER "${hdr_public}"
-	INCLUDE_DIRECTORIES "${include_dirs}")
+	INCLUDE_DIRECTORIES "${include_dirs}"
+	INTERFACE_INCLUDE_DIRECTORIES "${include_dirs}"
+	)
 
 target_link_libraries(${libname} ${libs})
 
 if(SCONF_BUILD_TESTS)
 	set(testname "sconf_tests")
-	add_executable(${testname} "tests/tests.cpp")
-	set_target_properties(${testname} PROPERTIES
-		INCLUDE_DIRECTORIES "${include_dirs}")
+	add_executable(${testname} EXCLUDE_FROM_ALL "tests/tests.cpp")
 	target_link_libraries(${testname} ${libname})
 endif()
 
@@ -72,4 +70,4 @@ install(TARGETS ${libname}
 	LIBRARY DESTINATION lib COMPONENT lib
 	ARCHIVE DESTINATION lib COMPONENT lib
 	RUNTIME DESTINATION bin COMPONENT bin
-	PUBLIC_HEADER DESTINATION include COMPONENT dev)
+	PUBLIC_HEADER DESTINATION include/sconf COMPONENT dev)
